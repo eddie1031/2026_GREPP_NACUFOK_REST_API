@@ -25,6 +25,7 @@ public class OllamaAiChatClient implements AiChatClient {
         return HttpClient.post(url, headers, copied);
     }
 
+    @Override
     public JsonNode chat(JsonNode body) {
         HttpClient.Response res = this.send(body);
         if (!res.isOk()) {

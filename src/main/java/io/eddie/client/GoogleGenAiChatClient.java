@@ -20,6 +20,7 @@ public class GoogleGenAiChatClient implements AiChatClient {
 
     }
 
+    @Override
     public JsonNode chat(JsonNode body) {
         HttpClient.Response res = send(body);
         if (!res.isOk()) {

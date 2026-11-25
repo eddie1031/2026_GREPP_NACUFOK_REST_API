@@ -23,10 +23,11 @@ public class OpenAiChatClient implements AiChatClient{
         return HttpClient.post(URL, headers, body);
     }
 
+    @Override
     public JsonNode chat(JsonNode body) {
         HttpClient.Response res = this.send(body);
         if (!res.isOk()) {
-            throw new RuntimeException();
+            throw new RuntimeException(res.json().toPrettyString());
         }
         return res.json();
     }
