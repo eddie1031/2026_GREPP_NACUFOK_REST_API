@@ -1,0 +1,15 @@
+# 빌드하면 target/classes 와 jar 안에 키가 그대로 복사되니, 빌드 결과물을 공유하지 마세요.
+# 환경변수(AI_PROVIDER, OPENAI_API_KEY, GEMINI_API_KEY, OLLAMA_BASE_URL ...)로 설정해도 됩니다.
+
+# openai, gemini, ollama
+ai.provider=openai
+
+openai.api.key=
+openai.model=gpt-4.1-mini
+
+gemini.api.key=
+gemini.model=gemini-2.5-flash
+
+ollama.base.url=http://localhost:11434
+ollama.model=
+

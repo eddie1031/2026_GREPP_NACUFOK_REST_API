@@ -1,0 +1,14 @@
+{
+    "version": "0.0.1",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "현재 Java 파일 실행",
+            "request": "launch",
+            "mainClass": "${file}",
+            "console": "integratedTerminal",
+            "shortenCommandLine": "auto",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
