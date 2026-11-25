@@ -1,0 +1,40 @@
+{
+    "name": "GREPP NACUFOK Java 1.8 Runtime",
+
+    "image": "eclipse-temurin:8-jdk-noble",
+
+    "runArgs": [
+        "--add-host=host.docker.internal:host-gateway"
+    ],
+
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+
+    "containerEnv": {
+        "JAVA_HOME": "/opt/java/openjdk",
+        "TZ": "Asia/Seoul",
+        "OLLAMA_BASE_URL": "http://host.docker.internal:11434"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack"
+            ],
+            "settings": {
+                "java.configuration.runtimes": [
+                    {
+                        "name": "JavaSE-1.8",
+                        "path": "/opt/java/openjdk",
+                        "default": true
+                    }
+                ],
+                "java.configuration.updateBuildConfiguration": "automatic",
+                "java.autobuild.enabled": true
+            }
+        }
+    },
+
+    "remoteUser": "root"
+}
