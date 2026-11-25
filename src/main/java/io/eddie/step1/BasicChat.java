@@ -3,6 +3,7 @@ package io.eddie.step1;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.eddie.client.AiChatClient;
+import io.eddie.client.GoogleGenAiChatClient;
 import io.eddie.client.OllamaAiChatClient;
 import io.eddie.client.OpenAiChatClient;
 import io.eddie.util.PropertiesConfiguration;
@@ -32,6 +33,7 @@ public class BasicChat {
                 System.out.println("답변 : " + ollama(q));
                 break;
             case "gemini":
+                System.out.println("답변 : " + gemini(q));
                 break;
         }
 
@@ -68,7 +70,29 @@ public class BasicChat {
     }
 
     static String gemini(String prompt) {
-        throw new UnsupportedOperationException("제미나이를 이용한 답변 받아오는 코드");
+
+        GoogleGenAiChatClient client = new GoogleGenAiChatClient();
+
+        ObjectNode body = obj(
+                "contents", arr(
+                        obj(
+                                "role", "user",
+                                "parts", arr(obj("text", prompt))
+                        )
+                )
+        );
+
+        JsonNode response = client.chat(body);
+//        System.out.println("response = " + response);
+
+        return response.path("candidates")
+                .path(0)
+                .path("content")
+                .path("parts")
+                .path(0)
+                .path("text")
+                .asText();
+
     }
 
     /**
